@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_1">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_wishlist"
+            android:icon="@drawable/ic_favorite_black"
+            android:title="Wishlist" />
+
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_2">
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_info"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_rate_us"
+            android:icon="@drawable/ic_star"
+            android:title="Rate us" />
+    </group>
+
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_3">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_setting"
+            android:title="Settings" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_reply_all"
+            android:title="Log Out" />
+    </group>
+
+    <!--<item android:title="Common">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_settings"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                    <!--android:title="Settings" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_logout"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Log Out" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

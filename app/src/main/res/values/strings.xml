@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PH-guide</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="title_top_destinations">Top Destinations</string>
+    <string name="title_destination_detail">Destination Detail</string>
+    <string name="destination_image_trans">destination transition</string>
+</resources>
