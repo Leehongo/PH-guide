@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Controller.Adapters.TopDestinationsAdapter;
 import com.ufc.phdestination.ph_guide.Controller.AsyncTasks.AsyncTopDestinations;
@@ -58,7 +57,7 @@ public class TopDestinationsActivity extends AppCompatActivity implements AsyncR
 
     private void initData(){
 
-       topDestinations = Destination.ITEMS;    //TODO remove, for test only
+       topDestinations = Destination.TOPDESTINATIONS;    //TODO remove, for test only
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_topdestinations);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

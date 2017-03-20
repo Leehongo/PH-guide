@@ -7,15 +7,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.ufc.phdestination.ph_guide.Model.Destination;
@@ -65,11 +60,10 @@ public class DestinationDetailActivity extends AppCompatActivity {
 
 
        private void init(){
-           //TODO get all details form calling screen
-           int item_id = getIntent().getIntExtra("destiantion_id", 0);
-           Destination item = Destination.ITEMS.get(item_id);
-           getSupportActionBar().setTitle(item.getDestinationName());
-           Utilities.loadImageFromURL(this, imageView, item.getImage()); //TODO reuse the image,
+           Destination destination = (Destination)getIntent().getSerializableExtra("destination");
+
+           getSupportActionBar().setTitle(destination.getDestinationName());
+           Utilities.loadImageFromURL(this, imageView, destination.getImage()); //TODO reuse the image,
        }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {

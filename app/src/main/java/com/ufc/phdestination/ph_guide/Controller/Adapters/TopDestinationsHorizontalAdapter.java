@@ -69,11 +69,9 @@ public class TopDestinationsHorizontalAdapter extends RecyclerView.Adapter<TopDe
             public void onClick(View view) {
                 switch (view.getId()){
                     case R.id.destination_card_view:
-                        Toast.makeText(view.getContext(), destination.getDestinationId() + " - "+ destination.getDestinationName(),Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(view.getContext(), DestinationDetailActivity.class);
 
-                        Bundle mBundle = new Bundle();
-                        intent.putExtra("destiantion_id",destination.getDestinationId());
+                        intent.putExtra("destination", destination);
 
                         ActivityOptionsCompat options = ActivityOptionsCompat.
                                 makeSceneTransitionAnimation((Activity)view.getContext(), view.findViewById(R.id.destination_card_view), mContext.getString(R.string.destination_image_trans));
