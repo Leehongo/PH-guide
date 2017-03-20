@@ -16,8 +16,9 @@ import android.widget.ImageView;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
-import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationDestinations;
+import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationActivities;
 import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationOverview;
+import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationReviews;
 
 public class DestinationDetailActivity extends AppCompatActivity {
 
@@ -67,7 +68,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
        }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
-        private static int NUM_ITEMS = 2;
+        private static int NUM_ITEMS = 3;
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -83,7 +84,9 @@ public class DestinationDetailActivity extends AppCompatActivity {
                 case 0:
                     return FragmentDestinationOverview.createInstance("overview");
                 case 1:
-                    return FragmentDestinationDestinations.createInstance("destinations");
+                    return FragmentDestinationActivities.createInstance("activities");
+                case 2:
+                    return FragmentDestinationReviews.createInstance("reviews");
                 default:
                     return null;
             }
@@ -94,9 +97,10 @@ public class DestinationDetailActivity extends AppCompatActivity {
             switch (position){
                 case 0:
                     return"OVERVIEW";
-
                 case 1:
-                    return"DESTINATIONS";
+                    return"ACTIVITIES";
+                case 2:
+                    return"REVIEWS";
             }
             return "";
         }

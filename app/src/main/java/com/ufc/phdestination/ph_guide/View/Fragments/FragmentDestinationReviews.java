@@ -13,19 +13,19 @@ import com.ufc.phdestination.ph_guide.R;
  * Created by Ideapad 300-15 on 28/11/2016.
  */
 
-public class FragmentDestinationDestinations extends Fragment {
+public class FragmentDestinationReviews extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.destination_detail_tab_destinations_fragment, container, false);
+        View view =  inflater.inflate(R.layout.destination_detail_tab_reviews_fragment, container, false);
 
         return view;
     }
 
-    public static FragmentDestinationDestinations createInstance(String text) {
+    public static FragmentDestinationReviews createInstance(String text) {
 
-        FragmentDestinationDestinations f = new FragmentDestinationDestinations();
+        FragmentDestinationReviews f = new FragmentDestinationReviews();
         Bundle b = new Bundle();
         b.putString("msg", text);
 

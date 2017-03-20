@@ -59,6 +59,7 @@ public class FeaturedDestinationViewPagerAdapter extends PagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { //TODO bug when selecting destination
+                Toast.makeText(mContext, "not available", Toast.LENGTH_SHORT).show();
 //                        Intent intent = new Intent(view.getContext(), DestinationDetailActivity.class);
 //
 //                        intent.putExtra("destination", destination);
