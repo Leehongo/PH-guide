@@ -14,19 +14,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
+import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
-import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
+import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinationsAdapter.MyViewHolder> {
+public class TopDestinationsHorizontalAdapter extends RecyclerView.Adapter<TopDestinationsHorizontalAdapter.MyViewHolder> {
 
     private static final String TAG = "TopDestinationsAdapter";
 
-    List<Destination> wislistDestinations = new ArrayList<Destination>();
+    List<Destination> topDestinationList = new ArrayList<Destination>();
 
     private Context mContext;
 
@@ -43,22 +43,22 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
     }
 
 
-    public TopDestinationsAdapter(Context mContext, List<Destination> wishlist){
+    public TopDestinationsHorizontalAdapter(Context mContext, List<Destination> topDestinationList){
         this.mContext = mContext;
-        Log.d(TAG,"size: " + wishlist.size());
-        this.wislistDestinations = wishlist;
+        Log.d(TAG,"size: " + topDestinationList.size());
+        this.topDestinationList = topDestinationList;
     }
 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.topdestination_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.topdestination_horizontal_list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder viewHolder, final int position) {
-        final Destination destination = wislistDestinations.get(position);
+        final Destination destination = topDestinationList.get(position);
         viewHolder.name.setText(destination.getDestinationName());
 
         Utilities.loadImageFromURL(this.mContext, viewHolder.image, destination.getImage());
@@ -87,7 +87,7 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
 
     @Override
     public int getItemCount() {
-        return wislistDestinations.size();
+        return topDestinationList.size();
     }
 
 

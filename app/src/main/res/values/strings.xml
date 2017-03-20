@@ -9,4 +9,9 @@
     <string name="title_top_destinations">Top Destinations</string>
     <string name="title_destination_detail">Destination Detail</string>
     <string name="destination_image_trans">destination transition</string>
+
+
+    <string name="overview">OVERVIEW</string>
+    <string name="destinations">DESTINATIONS</string>
+
 </resources>

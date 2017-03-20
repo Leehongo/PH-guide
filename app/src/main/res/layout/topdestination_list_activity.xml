@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.ufc.phdestination.phdestinations.WishListActivity">
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -34,7 +33,7 @@
             android:gravity="center">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycleview_wishlist"
+                android:id="@+id/recycleview_topdestinations"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

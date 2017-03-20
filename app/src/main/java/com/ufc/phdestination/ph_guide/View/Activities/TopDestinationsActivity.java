@@ -10,27 +10,31 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Controller.Adapters.TopDestinationsAdapter;
+import com.ufc.phdestination.ph_guide.Controller.AsyncTasks.AsyncTopDestinations;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
+import com.ufc.phdestination.ph_guide.View.Interface.AsyncResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopDestinationsActivity extends AppCompatActivity {
+public class TopDestinationsActivity extends AppCompatActivity implements AsyncResponse {
 
 
-    private static final String TAG = "WishlistFragment";
+    private static final String TAG = "TopDestinationActivity";
 
     RecyclerView mRecyclerView;
     protected RecyclerView.LayoutManager mLayoutManager;
     TopDestinationsAdapter topDestinationsAdapter;
+
+    AsyncTopDestinations asynctask = new AsyncTopDestinations();
 
     static List<Destination> topDestinations = new ArrayList<Destination>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_destination_list);
+        setContentView(R.layout.topdestination_list_activity);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getTitle());
@@ -54,14 +58,29 @@ public class TopDestinationsActivity extends AppCompatActivity {
 
     private void initData(){
 
-        topDestinations = Destination.ITEMS;    //TODO remove, for test only
+       topDestinations = Destination.ITEMS;    //TODO remove, for test only
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_wishlist);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_topdestinations);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Toast.makeText(this, "size: " + topDestinations.size(), Toast.LENGTH_SHORT).show();
+
+        topDestinationsAdapter = new TopDestinationsAdapter(this, topDestinations);
+        mRecyclerView.setAdapter(topDestinationsAdapter);
+
+
+        //AsyncTaks to get the list of top Destinations
+       // asynctask.delegate = this;    //TODO enable & delete above soon.
+       // asynctask.execute();
+    }
+
+
+    @Override
+    public void processFinish(List<Destination> destinationList) {
+        topDestinations = destinationList; //get the list after async task is finished
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_topdestinations);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         topDestinationsAdapter = new TopDestinationsAdapter(this, topDestinations);
         mRecyclerView.setAdapter(topDestinationsAdapter);
     }
-
 }

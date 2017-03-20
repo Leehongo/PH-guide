@@ -2,44 +2,112 @@ package com.ufc.phdestination.ph_guide.View.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
+import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationDestinations;
+import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationOverview;
 
 public class DestinationDetailActivity extends AppCompatActivity {
 
     ImageView imageView;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
+    FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_destination_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.destination_detail_toolbar);
+        setContentView(R.layout.destination_detail_activity);
+
+        toolbar = (Toolbar) findViewById(R.id.destination_detail_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        manager = getSupportFragmentManager();
+
         imageView = (ImageView) findViewById(R.id.destination_image);
+        tabLayout = (TabLayout) findViewById(R.id.destination_tab_layout);
+        viewPager = (ViewPager)findViewById(R.id.destination_viewpager);
 
+        //for tabs and viewpager
+        final MyPagerAdapter adapter = new MyPagerAdapter(manager);
+        viewPager.setAdapter(adapter);
 
+        tabLayout.setupWithViewPager(viewPager);
 
-        int item_id = getIntent().getIntExtra("destiantion_id", 0);
-        Destination item = Destination.ITEMS.get(item_id);
+        Utilities.getTransparentStatusBar(this);
 
+        collapsingToolbarLayout= (CollapsingToolbarLayout) findViewById(R.id.destination_toolbar_layout);
+        collapsingToolbarLayout.setTitleEnabled(false);
 
-        Utilities.loadImageFromURL(this, imageView, item.getImage());
-
-
+        init();
        }
 
+
+       private void init(){
+           //TODO get all details form calling screen
+           int item_id = getIntent().getIntExtra("destiantion_id", 0);
+           Destination item = Destination.ITEMS.get(item_id);
+           getSupportActionBar().setTitle(item.getDestinationName());
+           Utilities.loadImageFromURL(this, imageView, item.getImage()); //TODO reuse the image,
+       }
+
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+        private static int NUM_ITEMS = 2;
+
+        public MyPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return FragmentDestinationOverview.createInstance("overview");
+                case 1:
+                    return FragmentDestinationDestinations.createInstance("destinations");
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position){
+                case 0:
+                    return"OVERVIEW";
+
+                case 1:
+                    return"DESTINATIONS";
+            }
+            return "";
+        }
+    }
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

@@ -73,17 +73,18 @@ public class Destination {
     static String image4 = "http://8list.ph/wp-content/uploads/2015/09/8-Ways-to-Live-Like-a-Local-in-Bacolod_t.jpg";
     static String image5 = "http://www.rnrlifestyle.com/wp-content/uploads/2015/09/cebu1.jpg";
 
+    static String name[] = {"Palawan", "Bohol", "Biliran", "Bacolod", "Cebu"};
     static String images[] = {image1, image2, image3, image4, image5};
 
     static {
         // Add some sample items.
-        int imgCtr = 0;
+        int ctr = 0;
         for (int i = 0; i < 5; i++) {
 
-            imgCtr = (imgCtr >= images.length)? 0: imgCtr;
+            ctr = (ctr >= name.length)? 0: ctr;
 
-            ITEMS.add(new Destination(i,"item" + i,"description" + i,images[imgCtr]));
-            imgCtr++;
+            ITEMS.add(new Destination(i,name[ctr],name[ctr] + "description" + i,images[ctr]));
+            ctr++;
         }
     }
 

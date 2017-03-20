@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/destination_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:transitionName="@string/destination_image_trans">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/destination_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:transitionName="@string/destination_image_trans"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:alpha="0.5"
+                android:background="@color/black"
+                android:layout_alignBottom="@+id/linearLayout" />
+            <TextView
+                android:id="@+id/destination_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:text="Destination Name"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/destination_name"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp">
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:max="5"
+                    android:numStars="5"
+                    android:rating="5.0"
+                    android:stepSize="5.0"
+                    android:theme="@style/RatingBar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="43 Review"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/destination_fav_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_border_white"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="21dp"
+            android:layout_marginTop="18dp"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
