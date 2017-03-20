@@ -1,21 +1,17 @@
 package com.ufc.phdestination.ph_guide.Controller.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
-import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +55,8 @@ public class FeaturedDestinationViewPagerAdapter extends PagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { //TODO bug when selecting destination
-                Toast.makeText(mContext, "not available", Toast.LENGTH_SHORT).show();
+                Snackbar.make(view, "not available", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
 //                        Intent intent = new Intent(view.getContext(), DestinationDetailActivity.class);
 //
 //                        intent.putExtra("destination", destination);

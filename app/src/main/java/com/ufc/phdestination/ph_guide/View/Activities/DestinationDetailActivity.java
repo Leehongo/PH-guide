@@ -3,6 +3,8 @@ package com.ufc.phdestination.ph_guide.View.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
@@ -27,6 +31,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
     ViewPager viewPager;
     Toolbar toolbar;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    FloatingActionButton fab;
 
     FragmentManager manager;
 
@@ -36,35 +41,36 @@ public class DestinationDetailActivity extends AppCompatActivity {
         setContentView(R.layout.destination_detail_activity);
 
         toolbar = (Toolbar) findViewById(R.id.destination_detail_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        manager = getSupportFragmentManager();
-
         imageView = (ImageView) findViewById(R.id.destination_image);
         tabLayout = (TabLayout) findViewById(R.id.destination_tab_layout);
         viewPager = (ViewPager)findViewById(R.id.destination_viewpager);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.destination_toolbar_layout);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        //for tabs and viewpager
-        final MyPagerAdapter adapter = new MyPagerAdapter(manager);
-        viewPager.setAdapter(adapter);
-
-        tabLayout.setupWithViewPager(viewPager);
-
+        manager = getSupportFragmentManager();
         Utilities.getTransparentStatusBar(this);
-
-        collapsingToolbarLayout= (CollapsingToolbarLayout) findViewById(R.id.destination_toolbar_layout);
-        collapsingToolbarLayout.setTitleEnabled(false);
 
         init();
        }
 
 
        private void init(){
+           setSupportActionBar(toolbar);
+           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+           collapsingToolbarLayout.setTitleEnabled(false);
+
+           //for tabs and viewpager
+           viewPager.setAdapter(new MyPagerAdapter(manager));
+           tabLayout.setupWithViewPager(viewPager);
+
+           //set destination details
            Destination destination = (Destination)getIntent().getSerializableExtra("destination");
 
            getSupportActionBar().setTitle(destination.getDestinationName());
            Utilities.loadImageFromURL(this, imageView, destination.getImage()); //TODO reuse the image,
+
+           fab.setOnClickListener(ocl);
        }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
@@ -115,4 +121,17 @@ public class DestinationDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    View.OnClickListener ocl = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch ( view.getId()){
+                case R.id.fab:
+                    Snackbar.make(view, "not available", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                    break;
+            }
+        }
+    };
 }
