@@ -14,8 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
@@ -26,14 +27,17 @@ import com.ufc.phdestination.ph_guide.View.Fragments.FragmentDestinationReviews;
 
 public class DestinationDetailActivity extends AppCompatActivity {
 
-    ImageView imageView;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    Toolbar toolbar;
-    CollapsingToolbarLayout collapsingToolbarLayout;
-    FloatingActionButton fab;
+    private ImageView imageView;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private FloatingActionButton fabAdd,fabReview,fabQuestion;
+    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
 
-    FragmentManager manager;
+    private FragmentManager manager;
+
+    private Boolean isFabOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,18 @@ public class DestinationDetailActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.destination_tab_layout);
         viewPager = (ViewPager)findViewById(R.id.destination_viewpager);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.destination_toolbar_layout);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
+        fabReview = (FloatingActionButton) findViewById(R.id.fab_review);
+        fabQuestion = (FloatingActionButton) findViewById(R.id.fab_question);
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+
+
+        fabAdd.setOnClickListener(ocl);
+        fabReview.setOnClickListener(ocl);
+        fabQuestion.setOnClickListener(ocl);
 
         manager = getSupportFragmentManager();
         Utilities.getTransparentStatusBar(this);
@@ -70,7 +85,6 @@ public class DestinationDetailActivity extends AppCompatActivity {
            getSupportActionBar().setTitle(destination.getDestinationName());
            Utilities.loadImageFromURL(this, imageView, destination.getImage()); //TODO reuse the image,
 
-           fab.setOnClickListener(ocl);
        }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
@@ -127,11 +141,40 @@ public class DestinationDetailActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch ( view.getId()){
-                case R.id.fab:
-                    Snackbar.make(view, "not available", Snackbar.LENGTH_SHORT)
-                            .setAction("Action", null).show();
+                case R.id.fab_add:
+                    animateFAB();
+//                    Snackbar.make(view, "not available", Snackbar.LENGTH_SHORT)
+//                            .setAction("Action", null).show();
+                    break;
+                case R.id.fab_review:
+                    break;
+                case R.id.fab_question:
                     break;
             }
         }
     };
+
+
+    public void animateFAB(){
+
+        if(isFabOpen){
+
+            fabAdd.startAnimation(rotate_backward);
+            fabQuestion.startAnimation(fab_close);
+            fabReview.startAnimation(fab_close);
+            fabQuestion.setClickable(false);
+            fabReview.setClickable(false);
+            isFabOpen = false;
+
+        } else {
+
+            fabAdd.startAnimation(rotate_forward);
+            fabQuestion.startAnimation(fab_open);
+            fabReview.startAnimation(fab_open);
+            fabQuestion.setClickable(true);
+            fabReview.setClickable(true);
+            isFabOpen = true;
+
+        }
+    }
 }

@@ -1,0 +1,3 @@
+<resources>
+    <integer name="scrimAnimationDuration">300</integer>
+  </resources>
