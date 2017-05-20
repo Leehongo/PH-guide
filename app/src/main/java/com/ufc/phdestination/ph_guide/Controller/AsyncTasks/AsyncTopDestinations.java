@@ -18,7 +18,7 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 /**
- * Created by Ideapad 300-15 on 20/03/2017.
+ * Created by Leehongo 300-15 on 20/03/2017.
  */
 
 public class AsyncTopDestinations extends AsyncTask<Void, Void, Void> {

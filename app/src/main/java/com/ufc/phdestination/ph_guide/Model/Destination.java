@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Ideapad 300-15 on 04/12/2016.
+ * Created by Leehongo 300-15 on 04/12/2016.
  */
 
 public class Destination implements Serializable {

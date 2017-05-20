@@ -26,7 +26,7 @@ import com.ufc.phdestination.ph_guide.View.Activities.TopDestinationsActivity;
 import java.util.List;
 
 /**
- * Created by Ideapad 300-15 on 28/11/2016.
+ * Created by Leehongo 300-15 on 28/11/2016.
  */
 
 public class FragmentHome extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener {

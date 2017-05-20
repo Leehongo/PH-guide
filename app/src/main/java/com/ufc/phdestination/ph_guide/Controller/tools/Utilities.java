@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 /**
- * Created by Ideapad 300-15 on 16/01/2017.
+ * Created by Leehongo 300-15 on 16/01/2017.
  */
 
 public class Utilities {

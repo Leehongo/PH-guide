@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.ufc.phdestination.ph_guide.R;
 
 /**
- * Created by Ideapad 300-15 on 28/11/2016.
+ * Created by Leehongo 300-15 on 28/11/2016.
  */
 
 public class FragmentDestinationReviews extends Fragment {
