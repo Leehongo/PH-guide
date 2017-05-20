@@ -1,9 +1,20 @@
-# PH-guide
-Sample App to show the Material design
+# PH Destinations Sample
+Sample android mobile applciation, the app itself will show the tourist attractions in the country
 
-# Used
-CollapsibleLayout, SharedElements, etc..
-
+# Code summary
+This sample focuses on providing a simple, yet clean design and UI for mobile apps with use of material design standard.
+- Fragments
+- Using of Material theme & design pattern 
+- the use or RecyclerView widget
+- CardView
+- Design Support library25
+  - CoordinatorLayout
+  - FloatingActionButton
+  - CollapsingToolbarLayout
+- Material animation between activities using SharedElements
+- TabLayout
+- FAB animation.
+- Imageloader using [Glide](https://github.com/bumptech/glide)
 
 # Screenshot
 
@@ -11,4 +22,5 @@ CollapsibleLayout, SharedElements, etc..
 <img width="200" alt="portfolio_view" src="https://cloud.githubusercontent.com/assets/4744814/26192965/92d4795c-3bee-11e7-967b-846955389bef.png">
 <img width="200" alt="portfolio_view" src="https://cloud.githubusercontent.com/assets/4744814/26192955/8de0aa1a-3bee-11e7-87d5-1ee2cb9afc24.png">
 
-
+# NOTE
+the application it self is not that attractive. I just want to show how to implement the material design theme and how to code it using the sampel code of the applciation.
