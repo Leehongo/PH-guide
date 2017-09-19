@@ -4,8 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/destination_card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:transitionName="@string/destination_image_trans">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:orientation="vertical"
@@ -15,7 +14,7 @@
         <ImageView
             android:id="@+id/destination_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:scaleType="fitXY"
             android:transitionName="@string/destination_image_trans"/>
 

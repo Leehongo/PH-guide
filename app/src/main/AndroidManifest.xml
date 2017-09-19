@@ -37,7 +37,7 @@
             android:name=".View.Activities.DestinationDetailActivity"
             android:label="@string/title_destination_detail"
             android:parentActivityName=".View.Activities.TopDestinationsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBarTransparent">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufc.phdestination.ph_guide.View.Activities.TopDestinationsActivity" />
