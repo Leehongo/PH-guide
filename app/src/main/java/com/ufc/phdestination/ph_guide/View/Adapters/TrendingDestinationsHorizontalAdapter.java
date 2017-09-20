@@ -1,4 +1,4 @@
-package com.ufc.phdestination.ph_guide.Controller.Adapters;
+package com.ufc.phdestination.ph_guide.View.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,22 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
+import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
-import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
+import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinationsAdapter.MyViewHolder> {
+public class TrendingDestinationsHorizontalAdapter extends RecyclerView.Adapter<TrendingDestinationsHorizontalAdapter.MyViewHolder> {
 
     private static final String TAG = "TopDestinationsAdapter";
 
-    List<Destination> topDestinationList = new ArrayList<Destination>();
+    List<Destination> trendingDestinationList = new ArrayList<Destination>();
 
     private Context mContext;
 
@@ -34,32 +34,35 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
         public ImageView image;
+        public ProgressBar progressBar;
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.destination_name);
             image = (ImageView) view.findViewById(R.id.destination_image);
+            progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         }
     }
 
 
-    public TopDestinationsAdapter(Context mContext, List<Destination> destinationList){
+    public TrendingDestinationsHorizontalAdapter(Context mContext, List<Destination> trendingDestinationList){
         this.mContext = mContext;
-        this.topDestinationList = destinationList;
+        Log.d(TAG,"size: " + trendingDestinationList.size());
+        this.trendingDestinationList = trendingDestinationList;
     }
 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.topdestination_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.trendingdestination_horizontal_list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder viewHolder, final int position) {
-        final Destination destination = topDestinationList.get(position);
+        final Destination destination = trendingDestinationList.get(position);
         viewHolder.name.setText(destination.getDestinationName());
 
-        Utilities.loadImageFromURL(this.mContext, viewHolder.image, destination.getImage());
+        Utilities.loadImageFromURL(this.mContext, viewHolder.progressBar, viewHolder.image, destination.getImage());
 
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +86,7 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
 
     @Override
     public int getItemCount() {
-        return topDestinationList.size();
+        return trendingDestinationList.size();
     }
 
 

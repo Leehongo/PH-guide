@@ -16,9 +16,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.ufc.phdestination.ph_guide.Controller.Adapters.FeaturedDestinationViewPagerAdapter;
-import com.ufc.phdestination.ph_guide.Controller.Adapters.TopDestinationsHorizontalAdapter;
-import com.ufc.phdestination.ph_guide.Controller.Adapters.TrendingDestinationsHorizontalAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.FeaturedDestinationViewPagerAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.TopDestinationsHorizontalAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.TrendingDestinationsHorizontalAdapter;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
 import com.ufc.phdestination.ph_guide.View.Activities.TopDestinationsActivity;

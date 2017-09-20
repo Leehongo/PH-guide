@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
@@ -32,6 +33,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
+    private ProgressBar progressBar;
     private FloatingActionButton fabAdd,fabReview,fabQuestion;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
 
@@ -44,11 +46,13 @@ public class DestinationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.destination_detail_activity);
 
+
         toolbar = (Toolbar) findViewById(R.id.destination_detail_toolbar);
         imageView = (ImageView) findViewById(R.id.destination_image);
         tabLayout = (TabLayout) findViewById(R.id.destination_tab_layout);
         viewPager = (ViewPager)findViewById(R.id.destination_viewpager);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.destination_toolbar_layout);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         fabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
         fabReview = (FloatingActionButton) findViewById(R.id.fab_review);
         fabQuestion = (FloatingActionButton) findViewById(R.id.fab_question);
@@ -56,7 +60,6 @@ public class DestinationDetailActivity extends AppCompatActivity {
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
         rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
-
 
         fabAdd.setOnClickListener(ocl);
         fabReview.setOnClickListener(ocl);
@@ -67,7 +70,6 @@ public class DestinationDetailActivity extends AppCompatActivity {
 
         init();
        }
-
 
        private void init(){
            setSupportActionBar(toolbar);
@@ -83,8 +85,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
            Destination destination = (Destination)getIntent().getSerializableExtra("destination");
 
            getSupportActionBar().setTitle(destination.getDestinationName());
-           Utilities.loadImageFromURL(this, imageView, destination.getImage()); //TODO reuse the image,
-
+           Utilities.loadImageFromURL(this, progressBar, imageView, destination.getImage()); //TODO reuse the image,
        }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
@@ -136,7 +137,6 @@ public class DestinationDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     View.OnClickListener ocl = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -153,7 +153,6 @@ public class DestinationDetailActivity extends AppCompatActivity {
             }
         }
     };
-
 
     public void animateFAB(){
 

@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.ufc.phdestination.ph_guide.Controller.Adapters.TopDestinationsAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.TopDestinationsAdapter;
 import com.ufc.phdestination.ph_guide.Controller.AsyncTasks.AsyncTopDestinations;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
@@ -34,6 +34,8 @@ public class TopDestinationsActivity extends AppCompatActivity implements AsyncR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.topdestination_list_activity);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getTitle());

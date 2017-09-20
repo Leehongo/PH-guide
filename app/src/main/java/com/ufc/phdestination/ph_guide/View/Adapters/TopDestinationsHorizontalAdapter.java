@@ -1,9 +1,8 @@
-package com.ufc.phdestination.ph_guide.Controller.Adapters;
+package com.ufc.phdestination.ph_guide.View.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 import com.ufc.phdestination.ph_guide.Model.Destination;
@@ -35,10 +34,12 @@ public class TopDestinationsHorizontalAdapter extends RecyclerView.Adapter<TopDe
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
         public ImageView image;
+        public ProgressBar progressBar;
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.destination_name);
             image = (ImageView) view.findViewById(R.id.destination_image);
+            progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         }
     }
 
@@ -61,7 +62,7 @@ public class TopDestinationsHorizontalAdapter extends RecyclerView.Adapter<TopDe
         final Destination destination = topDestinationList.get(position);
         viewHolder.name.setText(destination.getDestinationName());
 
-        Utilities.loadImageFromURL(this.mContext, viewHolder.image, destination.getImage());
+        Utilities.loadImageFromURL(this.mContext, viewHolder.progressBar, viewHolder.image, destination.getImage());
 
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/destination_card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="250dp">
 
     <RelativeLayout
         android:orientation="vertical"
@@ -14,23 +13,28 @@
         <ImageView
             android:id="@+id/destination_image"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="fitXY"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:transitionName="@string/destination_image_trans"/>
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/destination_name_scrim_height_bottom"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/scrim_bottom"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:alpha="0.5"
-                android:background="@color/black"
-                android:layout_alignBottom="@+id/linearLayout" />
+
             <TextView
                 android:id="@+id/destination_name"
                 android:layout_width="match_parent"
@@ -65,6 +69,8 @@
                     android:textColor="@android:color/white"/>
             </LinearLayout>
         </RelativeLayout>
+
+
 
 
         <ImageView
