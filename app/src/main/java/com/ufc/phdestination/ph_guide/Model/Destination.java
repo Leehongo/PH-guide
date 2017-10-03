@@ -90,7 +90,7 @@ public class Destination implements Serializable {
     public static final List<Destination> TOPDESTINATIONS = new ArrayList<Destination>();
 
     static String topDestinationName[] = {"Palawan", "Bohol", "Biliran", "Bacolod", "Cebu"};
-    static String topDestinationImages[] = {"http://www.gophilippinestravel.ph/wp-content/uploads/2012/12/0006_nido31.jpg",
+    static String topDestinationImages[] = {"http://primer.com.ph/travel/wp-content/uploads/sites/6/2015/05/elnido-e1431244284485.jpg",
             "http://cheaptravelandtours.com/wordpress/wp-content/uploads/2016/07/Bohol-4a.jpg",
             "http://3c9bl93o71m619w9kn2rfwinkdh.wpengine.netdna-cdn.com/wp-content/uploads/2014/09/View-of-Maripipi-Volcano-from-Sambawan-Island.jpg",
             "http://8list.ph/wp-content/uploads/2015/09/8-Ways-to-Live-Like-a-Local-in-Bacolod_t.jpg",

@@ -24,7 +24,7 @@
 
         <activity
             android:name=".View.Activities.TopDestinationsActivity"
-            android:label="@string/title_top_destinations"
+            android:label="@string/top_destinations"
             android:parentActivityName=".View.Activities.BaseActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -35,7 +35,7 @@
 
         <activity
             android:name=".View.Activities.DestinationDetailActivity"
-            android:label="@string/title_destination_detail"
+            android:label="@string/destination_detail"
             android:launchMode="singleTask"
             android:parentActivityName=".View.Activities.TopDestinationsActivity"
             android:theme="@style/AppTheme.NoActionBarTransparent">

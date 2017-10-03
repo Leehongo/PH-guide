@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ufc.phdestination.ph_guide.View.Adapters.FeaturedDestinationViewPagerAdapter;
 import com.ufc.phdestination.ph_guide.View.Adapters.TopDestinationsHorizontalAdapter;
@@ -35,19 +36,19 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     private LinearLayout pager_indicator;
     private int dotsCount;
     private ImageView[] dots;
-    FeaturedDestinationViewPagerAdapter featuredDestinationViewPagerAdapter;
+    private FeaturedDestinationViewPagerAdapter featuredDestinationViewPagerAdapter;
 
-    RecyclerView topDestinationRecycleView;
-    Button seeAllTopDestinations;
-    Button seeAllTrendingDestinations;
+    private RecyclerView topDestinationRecycleView;
+    private TextView seeAllTopDestinations;
+    private TextView seeAllTrendingDestinations;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        seeAllTopDestinations = (Button) view.findViewById(R.id.fragment_home_topdestinations_see_all);
-        seeAllTrendingDestinations = (Button) view.findViewById(R.id.fragment_home_trending_destination_see_all);
+        seeAllTopDestinations = (TextView) view.findViewById(R.id.fragment_home_topdestinations_see_all);
+        seeAllTrendingDestinations = (TextView) view.findViewById(R.id.fragment_home_trending_destination_see_all);
 
 
         seeAllTopDestinations.setOnClickListener(ocl);

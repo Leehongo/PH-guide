@@ -1,20 +1,13 @@
 package com.ufc.phdestination.ph_guide.View.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -29,13 +22,18 @@ public class DestinationDetailActivity extends AppCompatActivity {
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ProgressBar progressBar;
 
-    private Boolean isFabOpen = false;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.actionbar_destination, menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.destination_detail_activity);
-
 
         toolbar = (Toolbar) findViewById(R.id.destination_detail_toolbar);
         imageView = (ImageView) findViewById(R.id.destination_image);
@@ -45,9 +43,23 @@ public class DestinationDetailActivity extends AppCompatActivity {
         Utilities.getTransparentStatusBar(this);
 
         init();
-       }
+    }
 
-       private void init(){
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.destination_menu_action_share:
+                break;
+
+            case R.id.action_settings:
+                break;
+        }
+        return true;
+    }
+
+    private void init(){
            setSupportActionBar(toolbar);
            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
