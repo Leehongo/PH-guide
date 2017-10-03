@@ -16,12 +16,12 @@
     <dimen name="fab_question_margin_bottom">190dp</dimen>
 
     <dimen name="appbar_height">320dp</dimen>
-    <dimen name="toolbar_height">104dp</dimen>
+    <dimen name="toolbar_height">55dp</dimen>
+
+
     <dimen name="scrimVisibleHeightTrigger">150dp</dimen>
     <dimen name="sheet_text_scrim_height_top">190dp</dimen>
     <dimen name="sheet_text_scrim_height_bottom">100dp</dimen>
-
-
     <dimen name="destination_name_scrim_height_bottom">200dp</dimen>
 
 </resources>
