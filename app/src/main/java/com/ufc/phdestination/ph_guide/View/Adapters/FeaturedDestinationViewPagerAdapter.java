@@ -1,7 +1,9 @@
 package com.ufc.phdestination.ph_guide.View.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ProgressBar;
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
+import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,7 @@ public class FeaturedDestinationViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.featureddestination_list_item, container, false);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.featured_destination_viewpager_item, container, false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.featured_destination_list_item_image);
         ProgressBar progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
 

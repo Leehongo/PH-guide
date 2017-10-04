@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,7 +44,7 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.main_fragment_home, container, false);
 
         seeAllTopDestinations = (TextView) view.findViewById(R.id.fragment_home_topdestinations_see_all);
         seeAllTrendingDestinations = (TextView) view.findViewById(R.id.fragment_home_trending_destination_see_all);

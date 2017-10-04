@@ -14,12 +14,13 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:elevation="0dp">
 
+        <!-- add snap in app:ayout_scrollFlags to trigger collapsed-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/destination_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:scrimAnimationDuration="@integer/scrimAnimationDuration"
             app:scrimVisibleHeightTrigger="@dimen/scrimVisibleHeightTrigger"
             app:toolbarId="@+id/toolbar">
@@ -64,26 +65,19 @@
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:titleMarginTop="13dp" />
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
+    <include layout="@layout/destination_detail_content"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_favorite_border_white"
+        app:layout_anchor="@id/destination_app_bar"
+        app:layout_anchorGravity="bottom|end"
+        app:backgroundTint="@color/colorPrimaryDark"/>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:lineSpacingExtra="8dp"
-            android:text="@string/sample"
-            android:padding="@dimen/activity_horizontal_margin"
-            />
-    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

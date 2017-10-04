@@ -3,7 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/destination_card_view"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     card_view:cardCornerRadius="4dp"
@@ -22,7 +22,7 @@
 
         <ImageView
             android:id="@+id/destination_image"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             android:transitionName="@string/destination_image_trans"/>
@@ -69,10 +69,12 @@
                     android:theme="@style/RatingBar"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="43 Review"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

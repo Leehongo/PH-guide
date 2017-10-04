@@ -13,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.ufc.phdestination.ph_guide.R;
 
 /**
  * Created by Leehongo 300-15 on 16/01/2017.
@@ -23,6 +24,8 @@ public class Utilities {
     public static void loadImageFromURL(@NonNull Context context, @NonNull final ProgressBar progressBar, ImageView imageView, String url){
         Glide.with(context)
                 .load(url)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
                 .crossFade()
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
@@ -37,19 +40,22 @@ public class Utilities {
                         return false;
                     }
                 })
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
     }
 
     public static void loadImageFullSizeFromURL(Context context, ImageView imageView, String url){
         Glide.with(context)
                 .load(url)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
     }
     //TODO use  .placeholder(R.drawable.loading_spinner)
 
-   public static void getTransparentStatusBar(Activity myActivityReference) {
+    public static void getTransparentStatusBar(Activity myActivityReference) {
         myActivityReference.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
@@ -62,5 +68,8 @@ public class Utilities {
                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
 
-    }
+}
+
+
+
 }

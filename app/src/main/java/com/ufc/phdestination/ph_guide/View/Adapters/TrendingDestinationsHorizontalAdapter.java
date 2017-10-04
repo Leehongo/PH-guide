@@ -53,7 +53,7 @@ public class TrendingDestinationsHorizontalAdapter extends RecyclerView.Adapter<
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.trendingdestination_horizontal_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_home_trending_destination_horizontal_list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 

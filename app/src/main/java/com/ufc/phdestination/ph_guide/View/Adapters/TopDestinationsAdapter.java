@@ -51,7 +51,7 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.topdestination_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.top_destination_list_activity_item, parent, false);
         return new MyViewHolder(itemView);
     }
 

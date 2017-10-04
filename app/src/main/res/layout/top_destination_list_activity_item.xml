@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/destination_card_view"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="250dp">
 
     <RelativeLayout
         android:orientation="vertical"
@@ -63,10 +63,12 @@
                     android:theme="@style/RatingBar"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="43 Review"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
             </LinearLayout>
         </RelativeLayout>
 

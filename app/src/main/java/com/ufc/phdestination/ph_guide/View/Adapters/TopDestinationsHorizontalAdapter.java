@@ -53,7 +53,7 @@ public class TopDestinationsHorizontalAdapter extends RecyclerView.Adapter<TopDe
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.topdestination_horizontal_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_home_top_destination_horizontal_list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 

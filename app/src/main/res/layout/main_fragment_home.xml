@@ -18,7 +18,7 @@
                 android:id="@+id/featured_destination_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/featureddestination_list_item"
+                tools:listitem="@layout/featured_destination_viewpager_item"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
             <RelativeLayout

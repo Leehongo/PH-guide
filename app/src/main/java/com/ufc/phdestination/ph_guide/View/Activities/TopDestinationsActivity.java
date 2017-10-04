@@ -33,7 +33,7 @@ public class TopDestinationsActivity extends AppCompatActivity implements AsyncR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.topdestination_list_activity);
+        setContentView(R.layout.top_destination_list_activity);
 
 
 

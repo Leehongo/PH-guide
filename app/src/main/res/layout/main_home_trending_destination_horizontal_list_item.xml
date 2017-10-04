@@ -67,10 +67,12 @@
                 android:theme="@style/RatingBar"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="43 Review"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:singleLine="true"
+                android:maxLines="1"/>
         </LinearLayout>
     </RelativeLayout>
 

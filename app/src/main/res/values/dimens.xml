@@ -7,9 +7,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
 
-    <!-- scroll offset of CollapsingToolbarLayout to start fill color-->
-    <dimen name="scrimVisibleHeightTrigger">100dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
+
+    <!-- scroll offset of CollapsingToolbarLayout to start fill color-->
+    <dimen name="scrimVisibleHeightTrigger">80dp</dimen>
 
 
     <dimen name="appbar_height">320dp</dimen>
@@ -19,5 +21,14 @@
     <dimen name="sheet_text_scrim_height_top">190dp</dimen>
     <dimen name="sheet_text_scrim_height_bottom">100dp</dimen>
     <dimen name="destination_name_scrim_height_bottom">200dp</dimen>
+
+
+
+    <dimen name="destination_detail_map_min">200dp</dimen>
+
+
+
+
+    <dimen name="destination_detail_title_size">30sp</dimen>
 
 </resources>
