@@ -24,7 +24,6 @@
             android:id="@+id/destination_image"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:scaleType="centerCrop"
             android:transitionName="@string/destination_image_trans"/>
 
 
