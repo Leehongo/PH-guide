@@ -72,8 +72,6 @@
         </RelativeLayout>
 
 
-
-
         <ImageView
             android:id="@+id/destination_fav_icon"
             android:layout_width="wrap_content"
