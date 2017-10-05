@@ -39,17 +39,17 @@
             android:title="Log Out" />
     </group>
 
-    <!--<item android:title="Common">-->
-        <!--<menu>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_settings"-->
-                <!--android:icon="@drawable/ic_menu_share"-->
-                    <!--android:title="Settings" />-->
-            <!--<item-->
-                <!--android:id="@+id/nav_logout"-->
-                <!--android:icon="@drawable/ic_menu_send"-->
-                <!--android:title="Log Out" />-->
-        <!--</menu>-->
-    <!--</item>-->
+    <!--<item android:title="Common">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_share"
+                    android:title="Settings" />
+            <item-
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Log Out" />
+        </menu>
+    </item>-->
 
 </menu>

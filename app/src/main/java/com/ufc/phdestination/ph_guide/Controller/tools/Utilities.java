@@ -32,7 +32,16 @@ public class Utilities {
             .centerCrop()
             .skipMemoryCache(true);
 
-    public static void loadImageFromURL(@NonNull Context context, @NonNull final ProgressBar progressBar, ImageView imageView, String url){
+
+    static RequestOptions myOptionsCircleImage = new RequestOptions()
+            .placeholder(R.drawable.placeholder)
+            .error(R.drawable.placeholder)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            .centerCrop()
+            .circleCrop()
+            .skipMemoryCache(true);
+
+    public static void loadImageFromURL(@NonNull Context context, final ProgressBar progressBar, ImageView imageView, String url){
         Glide.with(context)
                 .load(url)
                 .listener(new RequestListener<Drawable>() {
@@ -53,17 +62,10 @@ public class Utilities {
                 .into(imageView);
     }
 
-    public static void loadImageFullSizeFromURL(Context context, ImageView imageView, String url){
-        Glide.with(context)
-                .load(url)
-                .apply(myOptions.circleCrop())
-                .into(imageView);
-    }
-
     public static void loadAsRoundImageFromURL(Context context, ImageView imageView, String url){
         Glide.with(context)
                 .load(url)
-                .apply(myOptions)
+                .apply(myOptionsCircleImage)
                 .into(imageView);
     }
 

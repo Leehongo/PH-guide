@@ -50,12 +50,18 @@ public class BaseActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (item.getItemId()){
+            case R.id.action_suggestion:
+                break;
+            case R.id.action_report:
+                break;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     public boolean onNavigationItemSelected(MenuItem item) {

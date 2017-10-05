@@ -76,12 +76,12 @@ public class TopDestinationsActivity extends AppCompatActivity implements AsyncR
 
     @Override
     public void processFinish(List<Destination> destinationList) {
-        topDestinations = destinationList; //get the list after async task is finished
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_topdestinations);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        topDestinationsAdapter = new TopDestinationsAdapter(this, topDestinations);
-        mRecyclerView.setAdapter(topDestinationsAdapter);
+//        topDestinations = destinationList; //get the list after async task is finished
+//
+//        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_topdestinations);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        topDestinationsAdapter = new TopDestinationsAdapter(this, topDestinations);
+//        mRecyclerView.setAdapter(topDestinationsAdapter);
     }
 }

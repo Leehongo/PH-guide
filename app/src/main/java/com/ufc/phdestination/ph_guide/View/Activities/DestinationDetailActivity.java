@@ -5,33 +5,55 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ufc.phdestination.ph_guide.Model.Destination;
+import com.ufc.phdestination.ph_guide.Model.Review;
 import com.ufc.phdestination.ph_guide.R;
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
+import com.ufc.phdestination.ph_guide.View.Adapters.DestinationDetailReviewsAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.TopDestinationsAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DestinationDetailActivity extends AppCompatActivity {
 
+    private Menu menu;
     private ImageView imageView;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ProgressBar progressBar;
     private TextView destinationName;
     private FloatingActionButton fab;
+    private AppBarLayout appBarLayout;
+    private MenuItem menuItemBookmark;
+    private RecyclerView mRecyclerView;
+
+    private DestinationDetailReviewsAdapter reviewsAdapter;
+
+
+
+    static List<Review> reviewList = new ArrayList<Review>();
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.actionbar_destination, menu);
+
+        menuItemBookmark = menu.findItem(R.id.destination_menu_action_bookmark);
         return true;
     }
 
@@ -40,35 +62,17 @@ public class DestinationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.destination_detail_activity);
 
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         toolbar = (Toolbar) findViewById(R.id.destination_detail_toolbar);
         imageView = (ImageView) findViewById(R.id.destination_image);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.destination_toolbar_layout);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         destinationName = (TextView) findViewById(R.id.destination_name);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        appBarLayout = (AppBarLayout) findViewById(R.id.destination_app_bar);
 
         Utilities.getTransparentStatusBar(this);
 
         init();
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.home:
-                onClickBack();
-                Toast.makeText(this, "back", Toast.LENGTH_SHORT).show();
-                break;
-            
-            case R.id.destination_menu_action_share:
-                break;
-
-            case R.id.action_settings:
-                break;
-        }
-        return true;
     }
 
     private void init(){
@@ -85,29 +89,64 @@ public class DestinationDetailActivity extends AppCompatActivity {
         Utilities.loadImageFromURL(this, progressBar, imageView, destination.getImage()); //TODO reuse the image,
         destinationName.setText(destination.getDestinationName());
 
+        //Review List
 
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.destination_app_bar);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
+        reviewList = Review.REVIEWS;    //TODO remove, for test only
 
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        mRecyclerView = (RecyclerView) findViewById(R.id.destination_detail_content_review_highlight_recycleview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    getSupportActionBar().setDisplayShowTitleEnabled(true);
-                    isShow = true;
-                } else if(isShow) {
-                    getSupportActionBar().setDisplayShowTitleEnabled(false);//carefull there should a space between double quote otherwise it wont work
-                    isShow = false;
-                }
-            }
-        });
+        reviewsAdapter = new DestinationDetailReviewsAdapter(this, reviewList);
+        mRecyclerView.setAdapter(reviewsAdapter);
+
+
+        appBarLayout.addOnOffsetChangedListener(offsetChangedListener);
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.home:
+                onClickBack();
+                Toast.makeText(this, "back", Toast.LENGTH_SHORT).show();
+                break;
+            
+            case R.id.destination_menu_action_share:
+                break;
+
+            case R.id.destination_menu_action_bookmark:
+                break;
+        }
+        return true;
+    }
+
+    AppBarLayout.OnOffsetChangedListener offsetChangedListener = new AppBarLayout.OnOffsetChangedListener(){
+        boolean isShow = false;
+        int scrollRange = -1;
+
+        @Override
+        public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+            if (scrollRange == -1) {
+                scrollRange = appBarLayout.getTotalScrollRange();
+            }
+
+            if(menuItemBookmark != null){
+                boolean isFabVisible = (fab.getVisibility() == View.VISIBLE)? false: true;
+                menuItemBookmark.setVisible(isFabVisible);
+            }
+
+            if (scrollRange + verticalOffset == 0) {
+                getSupportActionBar().setDisplayShowTitleEnabled(true);
+                isShow = true;
+            } else if(isShow) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                isShow = false;
+            }
+        }
+    };
        
        private void onClickBack(){
            super.onBackPressed();

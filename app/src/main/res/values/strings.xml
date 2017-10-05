@@ -6,8 +6,17 @@
 
     <string name="destination_image_trans">destination transition</string>
 
+    <!-- action button message-->
+    <string name="action_bookmark">Bookmark</string>
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
+
+    <string name="action_suggestion">Suggestion</string>
+    <string name="action_suggest_edit">Suggest Edit</string>
+    <string name="action_report">Report</string>
+
+
+
 
     <string name="destination_detail">Destination detail</string>
     <string name="top_destinations">Top destinations</string>

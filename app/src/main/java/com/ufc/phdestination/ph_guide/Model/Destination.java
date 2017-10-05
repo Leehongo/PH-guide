@@ -10,10 +10,10 @@ import java.util.List;
 
 public class Destination implements Serializable {
 
-    int destinationId;
-    String destinationName;
-    String destinationDescription;
-    String image;
+    private int destinationId;
+    private String destinationName;
+    private String destinationDescription;
+    private String image;
 
 
     public Destination() {
@@ -82,7 +82,7 @@ public class Destination implements Serializable {
 
             ctr = (ctr >= featuredDestinationName.length)? 0: ctr;
 
-            FEATUREDDESTINATIONS.add(new Destination(i,featuredDestinationName[ctr],featuredDestinationName[ctr] + "description" + i,featuredDestinationImages[ctr]));
+            FEATUREDDESTINATIONS.add(new Destination(ctr,featuredDestinationName[ctr],featuredDestinationName[ctr] + "description" + i,featuredDestinationImages[ctr]));
             ctr++;
         }
     }
@@ -103,7 +103,7 @@ public class Destination implements Serializable {
 
             ctr = (ctr >= topDestinationName.length)? 0: ctr;
 
-            TOPDESTINATIONS.add(new Destination(i,topDestinationName[ctr],topDestinationName[ctr] + "description" + i,topDestinationImages[ctr]));
+            TOPDESTINATIONS.add(new Destination(ctr,topDestinationName[ctr],topDestinationName[ctr] + "description" + i,topDestinationImages[ctr]));
             ctr++;
         }
     }
@@ -124,7 +124,7 @@ public class Destination implements Serializable {
 
             ctr = (ctr >= trendingDestinationName.length)? 0: ctr;
 
-            TRENDINGDESTINATIONS.add(new Destination(i,trendingDestinationName[ctr],trendingDestinationName[ctr] + "description" + i,trendingDestinationImages[ctr]));
+            TRENDINGDESTINATIONS.add(new Destination(ctr,trendingDestinationName[ctr],trendingDestinationName[ctr] + "description" + i,trendingDestinationImages[ctr]));
             ctr++;
         }
     }

@@ -43,7 +43,6 @@ public class TopDestinationsHorizontalAdapter extends RecyclerView.Adapter<TopDe
         }
     }
 
-
     public TopDestinationsHorizontalAdapter(Context mContext, List<Destination> topDestinationList){
         this.mContext = mContext;
         Log.d(TAG,"size: " + topDestinationList.size());
