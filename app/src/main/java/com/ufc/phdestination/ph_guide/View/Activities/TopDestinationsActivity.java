@@ -35,8 +35,6 @@ public class TopDestinationsActivity extends AppCompatActivity implements AsyncR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top_destination_list_activity);
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getTitle());
         setSupportActionBar(toolbar);

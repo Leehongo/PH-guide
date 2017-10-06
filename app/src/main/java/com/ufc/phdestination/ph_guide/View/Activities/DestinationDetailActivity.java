@@ -37,8 +37,11 @@ public class DestinationDetailActivity extends AppCompatActivity {
     private TextView destinationName;
     private FloatingActionButton fab;
     private AppBarLayout appBarLayout;
-    private MenuItem menuItemBookmark;
+    private MenuItem menuItemWIshlist;
     private RecyclerView mRecyclerView;
+
+
+    private int HIGHTLIGHT_REVIEWS_SHOW_COUNT = 3;
 
     private DestinationDetailReviewsAdapter reviewsAdapter;
 
@@ -50,10 +53,9 @@ public class DestinationDetailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.actionbar_destination, menu);
+        getMenuInflater().inflate(R.menu.actionbar_destination, menu);
 
-        menuItemBookmark = menu.findItem(R.id.destination_menu_action_bookmark);
+        menuItemWIshlist = menu.findItem(R.id.destination_menu_action_wishlist);
         return true;
     }
 
@@ -96,7 +98,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.destination_detail_content_review_highlight_recycleview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        reviewsAdapter = new DestinationDetailReviewsAdapter(this, reviewList);
+        reviewsAdapter = new DestinationDetailReviewsAdapter(this, reviewList, HIGHTLIGHT_REVIEWS_SHOW_COUNT);
         mRecyclerView.setAdapter(reviewsAdapter);
 
 
@@ -116,7 +118,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
             case R.id.destination_menu_action_share:
                 break;
 
-            case R.id.destination_menu_action_bookmark:
+            case R.id.destination_menu_action_wishlist:
                 break;
         }
         return true;
@@ -133,9 +135,9 @@ public class DestinationDetailActivity extends AppCompatActivity {
                 scrollRange = appBarLayout.getTotalScrollRange();
             }
 
-            if(menuItemBookmark != null){
+            if(menuItemWIshlist != null){
                 boolean isFabVisible = (fab.getVisibility() == View.VISIBLE)? false: true;
-                menuItemBookmark.setVisible(isFabVisible);
+                menuItemWIshlist.setVisible(isFabVisible);
             }
 
             if (scrollRange + verticalOffset == 0) {

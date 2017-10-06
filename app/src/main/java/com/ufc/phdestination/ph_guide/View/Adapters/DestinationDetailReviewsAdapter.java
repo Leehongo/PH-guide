@@ -29,6 +29,8 @@ public class DestinationDetailReviewsAdapter extends RecyclerView.Adapter<Destin
 
     private Context mContext;
 
+    private int countToShow;
+
     View itemView;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -45,9 +47,10 @@ public class DestinationDetailReviewsAdapter extends RecyclerView.Adapter<Destin
         }
     }
 
-    public DestinationDetailReviewsAdapter(Context mContext, List<Review> reviewList){
+    public DestinationDetailReviewsAdapter(Context mContext, List<Review> reviewList, int countToShow){
         this.mContext = mContext;
         this.reviewList = reviewList;
+        this.countToShow = countToShow;
     }
 
     @Override
@@ -72,6 +75,6 @@ public class DestinationDetailReviewsAdapter extends RecyclerView.Adapter<Destin
 
     @Override
     public int getItemCount() {
-        return reviewList.size();
+        return (countToShow != reviewList.size())? countToShow : reviewList.size();
     }
 }
