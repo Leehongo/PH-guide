@@ -37,7 +37,6 @@
                 android:value="com.ufc.phdestination.ph_guide.View.Activities.BaseActivity" />
         </activity>
 
-
         <activity
             android:name=".View.Activities.DestinationDetailActivity"
             android:label="@string/destination_detail"
@@ -47,6 +46,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ufc.phdestination.ph_guide.View.Activities.TopDestinationsActivity" />
+        </activity>
+
+        <activity
+            android:name=".View.Activities.DestinationDetailReviewActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".View.Activities.DestinationDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
     </application>

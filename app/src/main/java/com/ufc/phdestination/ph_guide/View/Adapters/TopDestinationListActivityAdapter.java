@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +12,19 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
+import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
-import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
+import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrendingDestinationsHorizontalAdapter extends RecyclerView.Adapter<TrendingDestinationsHorizontalAdapter.MyViewHolder> {
+public class TopDestinationListActivityAdapter extends RecyclerView.Adapter<TopDestinationListActivityAdapter.MyViewHolder> {
 
-    private static final String TAG = "TopDestinationsAdapter";
+    private static final String TAG = "TopDestinationListActivityAdapter";
 
-    List<Destination> trendingDestinationList = new ArrayList<Destination>();
+    List<Destination> topDestinationList = new ArrayList<Destination>();
 
     private Context mContext;
 
@@ -44,22 +43,21 @@ public class TrendingDestinationsHorizontalAdapter extends RecyclerView.Adapter<
     }
 
 
-    public TrendingDestinationsHorizontalAdapter(Context mContext, List<Destination> trendingDestinationList){
+    public TopDestinationListActivityAdapter(Context mContext, List<Destination> destinationList){
         this.mContext = mContext;
-        Log.d(TAG,"size: " + trendingDestinationList.size());
-        this.trendingDestinationList = trendingDestinationList;
+        this.topDestinationList = destinationList;
     }
 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_home_trending_destination_horizontal_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.top_destination_activity_list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder viewHolder, final int position) {
-        final Destination destination = trendingDestinationList.get(position);
+        final Destination destination = topDestinationList.get(position);
         viewHolder.name.setText(destination.getDestinationName());
 
         Utilities.loadImageFromURL(this.mContext, viewHolder.progressBar, viewHolder.image, destination.getImage());
@@ -77,6 +75,7 @@ public class TrendingDestinationsHorizontalAdapter extends RecyclerView.Adapter<
                         ActivityOptionsCompat options = ActivityOptionsCompat.
                                 makeSceneTransitionAnimation((Activity)view.getContext(), view.findViewById(R.id.destination_card_view), mContext.getString(R.string.destination_image_trans));
                         view.getContext().startActivity(intent, options.toBundle());
+
                         break;
                 }
             }
@@ -86,7 +85,7 @@ public class TrendingDestinationsHorizontalAdapter extends RecyclerView.Adapter<
 
     @Override
     public int getItemCount() {
-        return trendingDestinationList.size();
+        return topDestinationList.size();
     }
 
 

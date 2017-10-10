@@ -21,9 +21,9 @@ import java.util.List;
  * Created by leehongo on 05/10/2017.
  */
 
-public class DestinationDetailReviewsAdapter extends RecyclerView.Adapter<DestinationDetailReviewsAdapter.MyViewHolder> {
+public class DestinationDetailReviewActivityAdapter extends RecyclerView.Adapter<DestinationDetailReviewActivityAdapter.MyViewHolder> {
 
-    private static final String TAG = "DestinationDetailReviewsAdapter";
+    private static final String TAG = "DestinationDetailReviewActivityAdapter";
 
     List<Review> reviewList = new ArrayList<Review>();
 
@@ -47,20 +47,20 @@ public class DestinationDetailReviewsAdapter extends RecyclerView.Adapter<Destin
         }
     }
 
-    public DestinationDetailReviewsAdapter(Context mContext, List<Review> reviewList, int countToShow){
+    public DestinationDetailReviewActivityAdapter(Context mContext, List<Review> reviewList, int countToShow){
         this.mContext = mContext;
         this.reviewList = reviewList;
         this.countToShow = countToShow;
     }
 
     @Override
-    public DestinationDetailReviewsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DestinationDetailReviewActivityAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.destination_detail_content_review_item, parent, false);
-        return new DestinationDetailReviewsAdapter.MyViewHolder(itemView);
+        return new DestinationDetailReviewActivityAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(DestinationDetailReviewsAdapter.MyViewHolder viewHolder, int position) {
+    public void onBindViewHolder(DestinationDetailReviewActivityAdapter.MyViewHolder viewHolder, int position) {
 
         final Review review = reviewList.get(position);
         UserAccount userAccount = review.getUserAccount();

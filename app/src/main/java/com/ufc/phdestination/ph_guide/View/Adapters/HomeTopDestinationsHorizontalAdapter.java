@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
+import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
-import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
+import com.ufc.phdestination.ph_guide.View.Activities.DestinationDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinationsAdapter.MyViewHolder> {
+public class HomeTopDestinationsHorizontalAdapter extends RecyclerView.Adapter<HomeTopDestinationsHorizontalAdapter.MyViewHolder> {
 
-    private static final String TAG = "TopDestinationsAdapter";
+    private static final String TAG = "TopDestinationListActivityAdapter";
 
     List<Destination> topDestinationList = new ArrayList<Destination>();
 
@@ -42,16 +43,16 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
         }
     }
 
-
-    public TopDestinationsAdapter(Context mContext, List<Destination> destinationList){
+    public HomeTopDestinationsHorizontalAdapter(Context mContext, List<Destination> topDestinationList){
         this.mContext = mContext;
-        this.topDestinationList = destinationList;
+        Log.d(TAG,"size: " + topDestinationList.size());
+        this.topDestinationList = topDestinationList;
     }
 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.top_destination_list_activity_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_home_top_destination_horizontal_list_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -68,14 +69,13 @@ public class TopDestinationsAdapter extends RecyclerView.Adapter<TopDestinations
             public void onClick(View view) {
                 switch (view.getId()){
                     case R.id.destination_card_view:
-                         Intent intent = new Intent(view.getContext(), DestinationDetailActivity.class);
+                        Intent intent = new Intent(view.getContext(), DestinationDetailActivity.class);
 
                         intent.putExtra("destination", destination);
 
                         ActivityOptionsCompat options = ActivityOptionsCompat.
                                 makeSceneTransitionAnimation((Activity)view.getContext(), view.findViewById(R.id.destination_card_view), mContext.getString(R.string.destination_image_trans));
                         view.getContext().startActivity(intent, options.toBundle());
-
                         break;
                 }
             }

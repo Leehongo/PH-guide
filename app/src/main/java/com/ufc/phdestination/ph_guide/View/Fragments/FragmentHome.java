@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ufc.phdestination.ph_guide.View.Adapters.FeaturedDestinationViewPagerAdapter;
-import com.ufc.phdestination.ph_guide.View.Adapters.TopDestinationsHorizontalAdapter;
-import com.ufc.phdestination.ph_guide.View.Adapters.TrendingDestinationsHorizontalAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.HomeFeaturedDestinationViewPagerAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.HomeTopDestinationsHorizontalAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.HomeTrendingDestinationsHorizontalAdapter;
 import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.R;
 import com.ufc.phdestination.ph_guide.View.Activities.TopDestinationsActivity;
@@ -35,7 +35,7 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     private LinearLayout pager_indicator;
     private int dotsCount;
     private ImageView[] dots;
-    private FeaturedDestinationViewPagerAdapter featuredDestinationViewPagerAdapter;
+    private HomeFeaturedDestinationViewPagerAdapter homeFeaturedDestinationViewPagerAdapter;
 
     private RecyclerView topDestinationRecycleView;
     private TextView seeAllTopDestinations;
@@ -83,12 +83,12 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
 
         pager_indicator = (LinearLayout) view.findViewById(R.id.viewPagerCountDots);
 
-        featuredDestinationViewPagerAdapter = new FeaturedDestinationViewPagerAdapter(getActivity(), Destination.FEATUREDDESTINATIONS);
-        viewPager.setAdapter(featuredDestinationViewPagerAdapter);
+        homeFeaturedDestinationViewPagerAdapter = new HomeFeaturedDestinationViewPagerAdapter(getActivity(), Destination.FEATUREDDESTINATIONS);
+        viewPager.setAdapter(homeFeaturedDestinationViewPagerAdapter);
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(this);
 
-        dotsCount = featuredDestinationViewPagerAdapter.getCount();
+        dotsCount = homeFeaturedDestinationViewPagerAdapter.getCount();
         dots = new ImageView[dotsCount];
 
         for (int i = 0; i < dotsCount; i++) {
@@ -113,7 +113,7 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     public void initTopDestinations(View view) {
         List<Destination> topDestinations = Destination.TOPDESTINATIONS;    //TODO remove, for test only
 
-        TopDestinationsHorizontalAdapter topDestinationsAdapter = new TopDestinationsHorizontalAdapter(getActivity(), topDestinations);
+        HomeTopDestinationsHorizontalAdapter topDestinationsAdapter = new HomeTopDestinationsHorizontalAdapter(getActivity(), topDestinations);
 
         topDestinationRecycleView = (RecyclerView) view.findViewById(R.id.top_destination_horizontal_recycleview);
 
@@ -125,7 +125,7 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     public void initTrendingDestinations(View view) {
         List<Destination> trendingDestinations = Destination.TRENDINGDESTINATIONS;    //TODO remove, for test only
 
-        TrendingDestinationsHorizontalAdapter trendingDestinationsAdapter = new TrendingDestinationsHorizontalAdapter(getActivity(), trendingDestinations);
+        HomeTrendingDestinationsHorizontalAdapter trendingDestinationsAdapter = new HomeTrendingDestinationsHorizontalAdapter(getActivity(), trendingDestinations);
 
         topDestinationRecycleView = (RecyclerView) view.findViewById(R.id.trending_destination_horizontal_recycleview);
 

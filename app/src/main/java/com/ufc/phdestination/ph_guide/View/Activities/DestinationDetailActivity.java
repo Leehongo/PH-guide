@@ -1,15 +1,16 @@
 package com.ufc.phdestination.ph_guide.View.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,8 +22,7 @@ import com.ufc.phdestination.ph_guide.Model.Destination;
 import com.ufc.phdestination.ph_guide.Model.Review;
 import com.ufc.phdestination.ph_guide.R;
 import com.ufc.phdestination.ph_guide.Controller.tools.Utilities;
-import com.ufc.phdestination.ph_guide.View.Adapters.DestinationDetailReviewsAdapter;
-import com.ufc.phdestination.ph_guide.View.Adapters.TopDestinationsAdapter;
+import com.ufc.phdestination.ph_guide.View.Adapters.DestinationDetailReviewActivityAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ProgressBar progressBar;
-    private TextView destinationName;
+    private TextView destinationName, showAllReview;
     private FloatingActionButton fab;
     private AppBarLayout appBarLayout;
     private MenuItem menuItemWIshlist;
@@ -43,7 +43,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
 
     private int HIGHTLIGHT_REVIEWS_SHOW_COUNT = 3;
 
-    private DestinationDetailReviewsAdapter reviewsAdapter;
+    private DestinationDetailReviewActivityAdapter reviewsAdapter;
 
 
 
@@ -71,6 +71,7 @@ public class DestinationDetailActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         destinationName = (TextView) findViewById(R.id.destination_name);
         appBarLayout = (AppBarLayout) findViewById(R.id.destination_app_bar);
+        showAllReview = (TextView) findViewById(R.id.destination_detail_content_review_highlight_show_all_review) ;
 
         Utilities.getTransparentStatusBar(this);
 
@@ -98,11 +99,12 @@ public class DestinationDetailActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.destination_detail_content_review_highlight_recycleview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        reviewsAdapter = new DestinationDetailReviewsAdapter(this, reviewList, HIGHTLIGHT_REVIEWS_SHOW_COUNT);
+        reviewsAdapter = new DestinationDetailReviewActivityAdapter(this, reviewList, HIGHTLIGHT_REVIEWS_SHOW_COUNT);
         mRecyclerView.setAdapter(reviewsAdapter);
 
 
         appBarLayout.addOnOffsetChangedListener(offsetChangedListener);
+        showAllReview.setOnClickListener(ocl);
 
     }
 
@@ -112,7 +114,6 @@ public class DestinationDetailActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.home:
                 onClickBack();
-                Toast.makeText(this, "back", Toast.LENGTH_SHORT).show();
                 break;
             
             case R.id.destination_menu_action_share:
@@ -153,4 +154,21 @@ public class DestinationDetailActivity extends AppCompatActivity {
        private void onClickBack(){
            super.onBackPressed();
        }
+
+
+       View.OnClickListener ocl = new View.OnClickListener(){
+           @Override
+           public void onClick(View v) {
+               switch(v.getId()){
+                   case R.id.destination_detail_content_review_highlight_show_all_review:
+
+                       Intent intent = new Intent(getApplicationContext(), DestinationDetailReviewActivity.class);
+                       startActivity(intent);
+
+                       break;
+               }
+           }
+       };
+
+
 }

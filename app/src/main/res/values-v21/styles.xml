@@ -16,4 +16,27 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="actionButtonStyle">@style/ActionButtonStyle</item>
     </style>
+
+
+
+    <style name="AppTheme.CloseActionOnly" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <!--ACTION BUTTON PADDING-->
+
+    <style name="ActionButtonStyle" parent="@android:style/Widget.Holo.Light.ActionButton">
+        <item name="android:minWidth">1dp</item>
+        <item name="android:paddingStart">1dp</item>
+        <item name="android:paddingEnd">1dp</item>
+    </style>
+
+<!--RATING BAR-->
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="colorControlNormal">@color/gray</item>
+    </style>
 </resources>
